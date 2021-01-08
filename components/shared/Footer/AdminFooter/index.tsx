@@ -20,7 +20,6 @@ const AdminFooter: React.FC = () => {
         </Col>
       </Row>
     </Container>
-
   )
 }
 
