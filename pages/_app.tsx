@@ -3,11 +3,15 @@ import Head from 'next/head'
 // importando o Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/globals.css'
-
 // imports relacionado ao redux
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '../store';
+
+// para o funcionamento correto do react-toastify
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
 
 // React.FC eh um componente funcional
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
