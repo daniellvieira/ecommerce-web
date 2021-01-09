@@ -1,5 +1,4 @@
-// é um rock, ele é um component que recebe como parametro um outro component 
-
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Cookie from 'js-cookie'
@@ -9,29 +8,32 @@ import User from '../../dtos/User'
 import ApiData from '../../dtos/ApiData'
 
 const withAuthAdmin = (Component) => {
-
-  // o Auth é o metodo que vai fazer a verificação se a gente deve 
-  // jogar o User para o login ou dar segmento normal
   const Auth = (props) => {
     const router = useRouter()
     const loggedUser: User = useSelector((state: AuthState) => state.auth.loggedUser)
     const apiData: ApiData = JSON.parse(Cookie.get('@api-data'))
-  
-    if (!loggedUser || 
-        loggedUser.profile !== 'admin' ||
-        !apiData ||
-        !apiData['access-token'] ||
-        apiData['access-token'] === '') {
+
+    // checando se o usuário existe no redux e se o mesmo é admin
+    // checando se os dados da api existem no cookie e ainda se existe
+    // o access-token salvo.
+    console.log(loggedUser)
+    if(!loggedUser || 
+      loggedUser.profile !== 'admin' ||
+      !apiData ||
+      !apiData['access-token'] ||
+      apiData['aceess-token'] === '') {
       router.push('/Auth/Login')
     }
-  
+
     return <Component {...props} />
   }
 
-  // quando estamos no next, temos o metodo getServerSideProps
-  // é uma maneira de forçar o next a renderizar de forma Server Side
-  // forma de garantir que o metodo vai ser passado, mesmo usando o rock
-  if (Component.getServerSideProps) {
+  // se o component tiver o método getServerSideProps (responsável por 
+  // fazer o fetch das props e realizar o pre-render da página no server side) 
+  // ele irá repassar para o component auth, para que assim as props sejam 
+  // acessiveis pelo Auth e caso o usuário tenha acesso a página, essas props 
+  // serão repassadas ao component (linha 19)
+  if(Component.getServerSideProps) {
     Auth.getServerSideProps = Component.getServerSideProps
   }
 

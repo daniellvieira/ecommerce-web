@@ -1,13 +1,13 @@
 import React from 'react'
+import AdminComponent from '../../components/shared/AdminComponent'
 import withAuthAdmin from '../../components/withAuthAdmin'
 
 const Home: React.FC = () => {
   return (
-    <>
-      <h1>Parabéns, você acessou o painel !!!</h1>
-    </>
+    <AdminComponent>
+      <h1>Painel Admin</h1>
+    </AdminComponent>
   )
 }
 
-// estou pegando o home puro e enviando como parametro para o withAuthAdmin
 export default withAuthAdmin(Home)
