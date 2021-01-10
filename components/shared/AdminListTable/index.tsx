@@ -1,0 +1,41 @@
+import React from 'react'
+import { Table } from 'react-bootstrap'
+import styles from '../../../styles/AdminPanel.module.css'
+
+interface AdminListTableProps {
+  first_title: string,
+  second_title?: string,
+  third_title?: string,
+  fourth_title?: string,
+  fifth_title?: string,
+  sixth_title?: string
+}
+
+const AdminListTable: React.FC<AdminListTableProps> = ({
+  children, first_title, second_title, third_title, fourth_title, fifth_title, sixth_title
+}) => {
+  return (
+    <div className={styles.admin_panel}>
+      <Table borderless={true} hover={true} responsive={true}>
+        <thead>
+          <tr>
+            {first_title && <th>{first_title}</th>}
+            {second_title && <th>{second_title}</th>}
+            {third_title && <th>{third_title}</th>}
+            {fourth_title && <th>{fourth_title}</th>}
+            {fifth_title && <th>{fifth_title}</th>}
+            {sixth_title && <th>{sixth_title}</th>}
+            <th colSpan={2}>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {children}
+        </tbody>
+
+      </Table>
+    </div>
+  )
+}
+
+export default AdminListTable
