@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import styles from '../../../styles/AdminPanel.module.css'
+import StyledButton from '../StyledButton'
 
 interface AdminListTableProps {
   first_title: string,
@@ -32,8 +33,19 @@ const AdminListTable: React.FC<AdminListTableProps> = ({
         <tbody>
           {children}
         </tbody>
-
       </Table>
+
+      <div className="pagination justify-content-end">
+        <div className="pagination">
+          <StyledButton action="<" type_button="blue" />
+          <StyledButton action="1" type_button="blue" />
+          <StyledButton action="2" type_button="blue" />
+          <StyledButton action="3" type_button="blue" />
+          ...
+          <StyledButton action="31" type_button="blue" />
+          <StyledButton action=">" type_button="blue" />
+        </div>
+      </div>
     </div>
   )
 }

@@ -6,5 +6,25 @@
 }
 
 .admin_panel table {
-  color: white;
+  color: var(--color-white);
+}
+
+.table_line {
+  background-color: var(--color-background);
+  padding-right: 110px;
+}
+
+.table_line:hover {
+  color: var(--color-white) !important;
+}
+
+.modal {
+  top: 20%;
+}
+
+.modal_body {
+  background-color: var(--color-primary);
+  padding: 50px;
+  text-align: center;
+  font-size: 29px;
 }
