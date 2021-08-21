@@ -7,15 +7,19 @@ import {
   faLaptop, faTicketAlt, faDollarSign, faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import SignOutService from '../../../util/SignOutService';
 
 const LateralMenu: React.FC = () => {
+  const router = useRouter();
+
   return (
     <div className={styles.background}>
       <Logo />
 
       <div className={styles.list}>
         <Link href="/Admin">
-          <a>
+          <a className={router.pathname === '/Admin' ? styles.active : ''}>
             <FontAwesomeIcon icon={faSignal}
               color="var(--color-gray-light)"
               className="mr-3" />
@@ -25,7 +29,7 @@ const LateralMenu: React.FC = () => {
         </Link>
 
         <Link href="/Admin/Users/List">
-          <a>
+          <a className={router.pathname === '/Admin/Users/List' ? styles.active : ''}>
             <FontAwesomeIcon icon={faUser}
               color="var(--color-gray-light)"
               className="mr-3" />
@@ -35,7 +39,7 @@ const LateralMenu: React.FC = () => {
         </Link>
 
         <Link href="/Admin/Products/List">
-          <a>
+        <a className={router.pathname === '/Admin/Products/List' ? styles.active : ''}>
             <FontAwesomeIcon icon={faGamepad}
               color="var(--color-gray-light)"
               className="mr-3" />
@@ -45,7 +49,7 @@ const LateralMenu: React.FC = () => {
         </Link>
 
         <Link href="/Admin/Categories/List">
-          <a>
+          <a className={router.pathname === '/Admin/Categories/List' ? styles.active : ''}>
             <FontAwesomeIcon icon={faCheckSquare}
               color="var(--color-gray-light)"
               className="mr-3" />
@@ -55,7 +59,7 @@ const LateralMenu: React.FC = () => {
         </Link>
 
         <Link href="/Admin/SystemRequirements/List">
-          <a>
+          <a className={router.pathname === '/Admin/SystemRequirements/List' ? styles.active : ''}>
             <FontAwesomeIcon icon={faLaptop}
               color="var(--color-gray-light)"
               className="mr-3" />
@@ -65,7 +69,7 @@ const LateralMenu: React.FC = () => {
         </Link>
 
         <Link href="/Admin/Coupons/List">
-          <a>
+          <a className={router.pathname === '/Admin/Coupons/List' ? styles.active : ''}>
             <FontAwesomeIcon icon={faTicketAlt}
               color="var(--color-gray-light)"
               className="mr-3" />
@@ -84,8 +88,8 @@ const LateralMenu: React.FC = () => {
           </a>
         </Link>
 
-        <Link href="/Admin/#">
-          <a>
+        <Link href="/Auth/Login">
+          <a onClick={SignOutService.execute}>
             <FontAwesomeIcon icon={faSignOutAlt}
               color="var(--color-gray-light)"
               className="mr-3" />

@@ -7,3 +7,15 @@
 .list {
   margin-top: 50px;
 }
+
+.active, .active svg {
+  color: var(--color-active);
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 990px) {
+  .background {
+    visibility: hidden;
+    height: 0;
+  }
+}
